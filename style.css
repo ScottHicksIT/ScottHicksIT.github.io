@@ -3,6 +3,11 @@ body {
     color: white;
 }
 
+.intro {
+    text-align: center;
+    background-color: grey;
+}
+
 
 @media all and (min-width:960px) and (max-width: 1024px) {
     /* put your css styles in here */   
