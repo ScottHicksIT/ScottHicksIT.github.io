@@ -1,11 +1,11 @@
-html {
+body {
     background-color: black;
     color: white;
 }
 
 
 @media all and (min-width:960px) and (max-width: 1024px) {
-    /* put your css styles in here */
+    /* put your css styles in here */   
     #widthTest {
         color:red;
 
