@@ -4,6 +4,8 @@ body {
 
 }
 
+/* Intro Section */
+
 .intro {
   height: 600px;
   /* align-items: stretch; */
@@ -12,10 +14,11 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin:30px 25px 25px 25px;
+  margin:30px;
   padding: 50px 50px 100px 50px;
   
 }
+
 
 .box1 {
   /* background-color: blue;  */
@@ -36,7 +39,6 @@ body {
   
 }
 
-
 .box3 {
    /* background-color: green;  */
    margin: 20px;
@@ -46,6 +48,36 @@ body {
   /* background-color: green;  */
   margin: 20px;
 }
+
+/* About Section */
+
+.about {
+  background-color: #2A2828;
+ 
+  margin:30px;
+  padding: 50px 50px 100px 50px;
+}
+
+.aboutContentContainer {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-evenly; */
+  gap:1rem;
+}
+
+.aboutHeading {
+  /* background-color: red; */
+}
+
+.aboutInfo {
+  /* background-color: blue; */
+  padding: 10px;
+}
+
+.aboutImage {
+  /* background-color: green; */
+}
+
 
 
 
