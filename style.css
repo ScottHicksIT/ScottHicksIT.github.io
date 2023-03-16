@@ -88,27 +88,24 @@ body {
       font-size: 8px;
   } 
   }
-  
-  @media all and (min-width:481px) and (max-width: 568px) {
-    /* put your css styles in here */
-
+    
+  @media only screen and (max-width: 600px) {
     html {
-      font-size: 5px;
-  } 
+      font-size: 8px;
+    } 
+
+    .intro {
+      height: 750px;
+    }
+
+    .box1 span {
+      display:block;
+    }
+
+    .box2 span {
+      display:block;
+    }
+
   }
   
-  @media all and (min-width:321px) and (max-width: 480px) {
-    /* put your css styles in here */
-
-    html {
-      font-size: 5px;
-  } 
-  }
-  
-  @media all and (min-width:0px) and (max-width: 320px) {
-    /* put your css styles in here */
-
-    html {
-      font-size: 5px;
-  } 
-  }
+ 
