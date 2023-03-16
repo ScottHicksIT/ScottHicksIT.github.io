@@ -78,6 +78,31 @@ body {
   /* background-color: green; */
 }
 
+/* Project Section  */
+.project {
+  background-color: #2a2828;
+ 
+  margin:30px;
+  padding: 50px 50px 100px 50px;
+}
+
+.projectContentContainer {
+  /* display: flex;
+  flex-direction: row; */
+  /* justify-content: space-evenly; */
+  gap:1rem;
+}
+
+.projectHeading {
+  
+}
+
+.projectInfo table tr td, table tr th{
+  background-color: #2a2828 !important;
+} 
+ 
+  
+
 
 
 
