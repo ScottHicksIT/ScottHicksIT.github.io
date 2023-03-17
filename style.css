@@ -103,6 +103,37 @@ body {
  
   
 
+/* Connect Four */
+/* Home Page */
+.board{
+  margin-top: 100px;
+
+}
+
+.row {
+  display: flex;
+  flex-direction: row; 
+  gap:3rem;
+  margin: 25px;
+  justify-content: center;
+
+}
+
+.token {
+  
+  height: 70px;
+  width: 70px;
+  background-color: #D9D9D9;
+  border-radius: 50%;
+  display: inline-block;
+
+}
+
+
+
+
+
+
 
 /* Responsiveness */
 
