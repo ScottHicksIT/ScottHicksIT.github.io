@@ -104,13 +104,16 @@ body {
   
 
 
+/* Responsiveness */
 
+    
+  @media only screen and (max-width: 600px) {
+   
+    
 
-
-
-
-
-@media all and (min-width:960px) and (max-width: 1024px) {
+  }
+  
+  @media all and (min-width:960px) and (max-width: 1024px) {
     /* put your css styles in here */   
     
     html {
@@ -126,7 +129,7 @@ body {
   } 
   }
   
-  @media all and (min-width:769px) and (max-width: 800px) {
+  @media all and (min-width:701px) and (max-width: 800px) {
     /* put your css styles in here */
 
     html {
@@ -134,15 +137,9 @@ body {
   } 
   }
   
-  @media all and (min-width:569px) and (max-width: 768px) {
-    /* put your css styles in here */
+  @media all and (max-width: 699px) {
+    /* Intro Section */
 
-    html {
-      font-size: 8px;
-  } 
-  }
-    
-  @media only screen and (max-width: 600px) {
     html {
       font-size: 8px;
     } 
@@ -170,6 +167,13 @@ body {
       font-size: 1.5rem;
     }
 
+    /*About Section */
+
+    .about {
+      text-align: center;
+    }
+
+    .aboutContentContainer {
+      flex-direction: column;
+    }
   }
-  
- 
