@@ -17,12 +17,11 @@ playerOneCoords.push(new coordinate(12, 7));
 console.log(playerOneCoords);
 
 
+//This is now redundant. To be deleted. 
 function updateToken(clicked_id){
     //Check players turn
     if (playerOneTurn == true){
-
     } else {
-        
     }
     changeStatus(clicked_id); 
 }
@@ -55,16 +54,31 @@ function changeStatus(clicked_id){
 }
 
 function checkIfPlayAbleToken(x,y) {
+    //Check if token has already been played
     let playable = true;
     for (let i = 0; i < activeTokens.length; i++) {
+        //Check if token is currently already active. 
         if (x == activeTokens[i].x && y == activeTokens[i].y) {
             // alert("This token has alread been selected");
             playable = false;
         } 
     }
+
+    
+    //Check if token is stacked on another token
+    // for (let i = 0; i < activeTokens.length; i++) {
+    //     console.log("x=" + x);
+    //     console.log("y=" + y);
+    //     console.log("y-1 =" + (y-1));
+
+    //     if (x == activeTokens[i].x && y == (activeTokens[i].y + 1)) {
+            
+    //     } else {
+    //         alert("Token must be placed above another token!")
+    //         playable = false;
+    //         break;  
+    //     }
+    // }
+
     return playable;
 }
-
-
-
-
