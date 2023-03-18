@@ -126,6 +126,7 @@ body {
   background-color: #D9D9D9;
   border-radius: 50%;
   display: inline-block;
+  animation: pulse 10s infinite;
 
 }
 

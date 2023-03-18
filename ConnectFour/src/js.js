@@ -10,9 +10,6 @@ var playerOneCoords = new Array();
 var playerTwoCoords = new Array();
 var activeTokens = new Array();
 
-playerOneCoords.push(new coordinate(10, 0));
-playerOneCoords.push(new coordinate(1, 0));
-playerOneCoords.push(new coordinate(12, 7));
 
 console.log(playerOneCoords);
 
@@ -50,7 +47,12 @@ function changeStatus(clicked_id){
             document.getElementById("playerTurn").innerHTML = "PLayer One's Turn";
             playerOneTurn = true;
         }
-    } 
+    } else {
+        // Shows when a token is incorrect and cannot be selected. 
+        id = x + "," + y;
+        console.log(id);
+        // document.getElementById(id).style.boxShadow = "0px 0px 30px 5px red";
+    }
 }
 
 function checkIfPlayAbleToken(x,y) {
@@ -64,21 +66,20 @@ function checkIfPlayAbleToken(x,y) {
         } 
     }
 
-    
-    //Check if token is stacked on another token
-    // for (let i = 0; i < activeTokens.length; i++) {
-    //     console.log("x=" + x);
-    //     console.log("y=" + y);
-    //     console.log("y-1 =" + (y-1));
-
-    //     if (x == activeTokens[i].x && y == (activeTokens[i].y + 1)) {
-            
-    //     } else {
-    //         alert("Token must be placed above another token!")
-    //         playable = false;
-    //         break;  
-    //     }
-    // }
-
+    //Check to see if the token is placed above another token
+    //If token is placed on bottom row, it does not check. 
+    if (y != 1){
+        let tokenBelow = false;
+        for (let i = 0; i < activeTokens.length; i++) {
+            if (x == activeTokens[i].x && y-1 == (activeTokens[i].y)){
+                console.log(x,y);
+                tokenBelow = true;
+            }
+        }
+        if (tokenBelow == false) {
+            playable = false;
+            console.log("No Token Was Found Below This Token");
+        }
+    } 
     return playable;
 }
