@@ -30,7 +30,7 @@ function updateToken(clicked_id){
             document.getElementById(clicked_id).style.backgroundColor = "yellow";
             playerTwoCoords.push(new coordinate(parseInt(x), parseInt(y)));
             activeTokens.push(new coordinate(parseInt(x), parseInt(y)));
-            document.getElementById("playerTurn").innerHTML = "PLayer One's Turn";
+            document.getElementById("playerTurn").innerHTML = "Player One's Turn";
             playerOneTurn = true;
         }
     } else {
