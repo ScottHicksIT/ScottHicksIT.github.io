@@ -13,6 +13,7 @@ function coordinate(x, y) {
 
 //This runs if a player selects a token. 
 function updateToken(clicked_id){
+    checkWinner();
     //Recieves the text coordinate and creates it as array with two elements
     let text = clicked_id;
     let coordArrary = text.split(",")
@@ -56,13 +57,13 @@ function checkIfPlayAbleToken(x,y) {
         let tokenBelow = false;
         for (let i = 0; i < activeTokens.length; i++) {
             if (x == activeTokens[i].x && y-1 == (activeTokens[i].y)){
-                console.log(x,y);
+                
                 tokenBelow = true;
             }
         }
         if (tokenBelow == false) {
             playable = false;
-            console.log("No Token Was Found Below This Token");
+          
         }
     } 
     return playable;
@@ -90,13 +91,11 @@ function checkToken(hover_id){
         let tokenBelow = false;
         for (let i = 0; i < activeTokens.length; i++) {
             if (x == activeTokens[i].x && y-1 == (activeTokens[i].y)){
-                console.log(x,y);
                 tokenBelow = true;
             }
         }
         if (tokenBelow == false) {
             playable = false;
-            console.log("No Token Was Found Below This Token");
             elem.style.boxShadow = "0px 0px 30px 5px red";
         }
     } 
@@ -111,4 +110,27 @@ function resetToken(hover_id){
     tokenID = x + "," + y;
     var elem = document.getElementById(tokenID); 
     elem.style.boxShadow = "0px 0px 0px 0px red";
+}
+
+//Check who has won
+function checkWinner(){
+
+
+
+    
+   /*  //Check for vertical wins
+    let verticalCount = 0;
+    let horizontalCount = 0;
+
+    if (activeTokens.length > ){
+        // console.log(playerOneCoords.length); 
+        // let mostRecent = playerOneCoords.length;
+        // console.log(mostRecent);
+        // let num = parseInt(mostRecent);
+        console.log(activeTokens[3]);
+     
+
+    } */
+   
+    
 }
