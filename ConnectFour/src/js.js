@@ -5,15 +5,23 @@ var playerOneCoords = new Array();
 var playerTwoCoords = new Array();
 var activeTokens = new Array();
 
-//Coordinate Object
-function coordinate(x, y) {
-    this.x = x;
-    this.y = y;
-}        
+//Token Object
+class Token {
+    constructor(x,y,owner){
+        this.x = x;
+        this.y = y;
+        this.owner = owner;
+    }
+
+    getCoordinates() {
+        return this.x + "," + this.y;
+    }
+}
+
+
 
 //This runs if a player selects a token. 
 function updateToken(clicked_id){
-    checkWinner();
     //Recieves the text coordinate and creates it as array with two elements
     let text = clicked_id;
     let coordArrary = text.split(",")
@@ -23,20 +31,19 @@ function updateToken(clicked_id){
     if (checkIfPlayAbleToken(x,y) == true) {
         if (playerOneTurn == true){
             document.getElementById(clicked_id).style.backgroundColor = "red";
-            playerOneCoords.push(new coordinate(parseInt(x), parseInt(y)));
-            activeTokens.push(new coordinate(parseInt(x), parseInt(y)));
-            document.getElementById("playerTurn").innerHTML = "Player Two's Turn";
+            playerOneCoords.push(new Token(parseInt(x), parseInt(y), "PLayerOne"));
+            activeTokens.push(new Token(parseInt(x), parseInt(y), "PLayerOne"));
+            document.getElementById("playerTurn").innerHTML = "Player Two's Turn";   
             playerOneTurn = false;
         } else {
             document.getElementById(clicked_id).style.backgroundColor = "yellow";
-            playerTwoCoords.push(new coordinate(parseInt(x), parseInt(y)));
-            activeTokens.push(new coordinate(parseInt(x), parseInt(y)));
+            playerTwoCoords.push(new Token(parseInt(x), parseInt(y), "PLayerTwo"));
+            activeTokens.push(new Token(parseInt(x), parseInt(y), "PLayerTwo"));
             document.getElementById("playerTurn").innerHTML = "Player One's Turn";
             playerOneTurn = true;
         }
-    } else {
-        incorrectToken(x,y);
-    }
+    } 
+    checkWinner();
 }
 
 //Once token has been selected, this checks if the token has already been played or if there is a token below the selected token. 
@@ -67,8 +74,8 @@ function checkIfPlayAbleToken(x,y) {
         }
     } 
     return playable;
-    
 }
+
 
 //This is ran before the player has clicked a token. 
 //If the token does not have a token below it, the token box shadow turns red. 
@@ -81,10 +88,6 @@ function checkToken(hover_id){
     let y = coordArrary[1]
     tokenID = x + "," + y;
     var elem = document.getElementById(tokenID); 
-
-    //Add check if token has already been selected. 
-
-
 
     //Checks if a token is below
     if (y != 1){
@@ -101,7 +104,7 @@ function checkToken(hover_id){
     } 
 }
 
-//This resets the token's box shadow once the player moves away from the token they are mousing over. 
+//Resets the token's box shadow once the player moves away from the token they are mousing over. 
 function resetToken(hover_id){
     let text = hover_id;
     let coordArrary = text.split(",")
@@ -114,23 +117,33 @@ function resetToken(hover_id){
 
 //Check who has won
 function checkWinner(){
-
-
-
-    
-   /*  //Check for vertical wins
-    let verticalCount = 0;
-    let horizontalCount = 0;
-
-    if (activeTokens.length > ){
-        // console.log(playerOneCoords.length); 
-        // let mostRecent = playerOneCoords.length;
-        // console.log(mostRecent);
-        // let num = parseInt(mostRecent);
-        console.log(activeTokens[3]);
-     
-
-    } */
+    let localCoord = playerOneCoords;
+    let count = 0;
+    let yValues = new Array(); 
+    let xValues = new Array();
    
-    
+    //check's PlayerOne's tokens for vertical connects
+   for (let i = 1; i < 8; i++) {
+    count = 0;
+    for (let j = 0; j < playerOneCoords.length; j++){
+        if (playerOneCoords[j].x == i){
+            count++;
+        }
+    }
+
+    if (count == 4){
+        alert("Player One has 4 tokens in column " + i);
+        bool = false;
+        // alert(yValues);
+        for (let k = 0; k < yValues.length -1;k++){
+            if (yValues[k] == yValues[k+1] -1) {
+                bool = true;
+                alert ("true");
+            } else {
+                bool = false;
+                alert ("false");
+            }
+        }
+    } 
+   }
 }
