@@ -121,6 +121,9 @@ function resetToken(hover_id){
     elem.style.boxShadow = "0px 0px 0px 0px red";
 }
 
+
+
+
 //Check who has won
 function checkWinner(){   
     let count = 0;
@@ -136,11 +139,10 @@ function checkWinner(){
                 count++;
             }
         }
-        if (count == 4){
-            alert("Player 1 has 4 tokens in a column")
+        if (count >= 4){
+            //alert("Player 1 has 4 tokens in a column")
             checkIfSequential(tokenObjectPos, "Player1", count);
         }
-
         
         count = 0;
         tokenObjectPos = [];
@@ -152,47 +154,11 @@ function checkWinner(){
                 count++;
             }
         }
-        if (count == 4){
-            alert("Player 2 has 4 tokens in a column")
+        if (count >= 4){
+            //alert("Player 2 has 4 tokens in a column")
             checkIfSequential(tokenObjectPos, "Player2", count);
-        }
-        
-
-    }
-
-    checkIfSequential(tokenObjectPos, "Player2", count);
-    
-        //Checks if there is 4 tokens in the selected column
-        // if (count == 4){
-        //     let sequentialOrder = true;
-        //     let firstToken = playerOneCoords[tokenObjectPos[0]];
-        //     let secondToken = playerOneCoords[tokenObjectPos[1]];
-        //     let thirdToken = playerOneCoords[tokenObjectPos[2]];
-        //     let fourthToken = playerOneCoords[tokenObjectPos[3]];
-      
-        //     //Check if tokens are in order vertically
-        //     if (secondToken.getYCoord() != firstToken.getYCoord() + 1 ){
-        //         sequentialOrder = false;
-        //     } 
-
-        //     if (thirdToken.getYCoord() != firstToken.getYCoord() + 2 ){
-        //         sequentialOrder = false;
-        //     } 
-
-        //     if (fourthToken.getYCoord() != firstToken.getYCoord() + 3 ){
-        //         sequentialOrder = false;
-        //     } 
-            
-        //     if(sequentialOrder == true){
-        //        alert("The tokens are in order!!!");
-        //        for (k = 0; k < tokenObjectPos.length; k++){
-        //         let tokenID = playerOneCoords[tokenObjectPos[k]].getCoordinates();
-        //         var elem = document.getElementById(tokenID); 
-        //         elem.style.boxShadow = "0px 0px 30px 5px white";
-        //        }  
-        //     } 
-        // }
-   
+        }   
+    }   
 }   
 
 
@@ -204,50 +170,158 @@ function checkIfSequential(tokenIndexs, player, tokenCount){
     let secondToken;
     let thirdToken;
     let fourthToken;
+  
     //alert()
     
 
     if (player == "Player1"){
-        firstToken = playerOneCoords[tokenIndexs[0]];
-        secondToken = playerOneCoords[tokenIndexs[1]];
-        thirdToken = playerOneCoords[tokenIndexs[2]];
-        fourthToken = playerOneCoords[tokenIndexs[3]];
+        //firstToken = playerOneCoords[tokenIndexs[0]];
+        // secondToken = playerOneCoords[tokenIndexs[1]];
+        // thirdToken = playerOneCoords[tokenIndexs[2]];
+        // fourthToken = playerOneCoords[tokenIndexs[3]];
+       
+        for (let i = 0; i < tokenIndexs.length; i++){
+            alert("In for loop");
+            firstToken = playerOneCoords[tokenIndexs[i]];
+            secondToken = playerOneCoords[tokenIndexs[i+1]];
+            thirdToken = playerOneCoords[tokenIndexs[i+2]];
+            fourthToken = playerOneCoords[tokenIndexs[i+3]];
+          
+            //Check if tokens are in order vertically
+            if (secondToken.getYCoord() == firstToken.getYCoord() + 1 ){
+                sequentialOrder = true;
+                //alert("In First Check: " + sequentialOrder);
+            } else {
+                sequentialOrder = false;
+                //alert("In First Check: " + sequentialOrder);
+            }
+
+            if (thirdToken.getYCoord() == firstToken.getYCoord() + 2 ){
+                sequentialOrder = true;
+                //alert("In Second Check: " + sequentialOrder);
+            } else {
+                sequentialOrder = false;
+                //alert("In Second Check: " + sequentialOrder);
+            }
+
+            if (fourthToken.getYCoord() == firstToken.getYCoord() + 3 ){
+                sequentialOrder = true;
+                //alert("In Third Check: " + sequentialOrder);
+            } else {
+                sequentialOrder = false;
+                //alert("In Third Check: " + sequentialOrder);
+            }
+
+            if(sequentialOrder == true){
+                alert("The tokens are in order!!!");
+                let tokenID;
+                for (k = i; k < tokenIndexs.length; k++){
+                if (player == "Player1"){
+                    tokenID = playerOneCoords[tokenIndexs[k]].getCoordinates();
+                } else if (player == "Player2") {
+                    tokenID = playerTwoCoords[tokenIndexs[k]].getCoordinates();
+                }
+                var elem = document.getElementById(tokenID); 
+                elem.style.boxShadow = "0px 0px 30px 5px white";
+                }  
+                break;
+            } 
+        }
     } else if (player == "Player2") {
-        firstToken = playerTwoCoords[tokenIndexs[0]];
-        secondToken = playerTwoCoords[tokenIndexs[1]];
-        thirdToken = playerTwoCoords[tokenIndexs[2]];
-        fourthToken = playerTwoCoords[tokenIndexs[3]];
+        // firstToken = playerTwoCoords[tokenIndexs[0]];
+        // secondToken = playerTwoCoords[tokenIndexs[1]];
+        // thirdToken = playerTwoCoords[tokenIndexs[2]];
+        // fourthToken = playerTwoCoords[tokenIndexs[3]];
+
+        for (let i = 0; i < tokenIndexs.length; i++){
+            alert("In for loop");
+            firstToken = playerTwoCoords[tokenIndexs[i]];
+            secondToken = playerTwoCoords[tokenIndexs[i+1]];
+            thirdToken = playerTwoCoords[tokenIndexs[i+2]];
+            fourthToken = playerTwoCoords[tokenIndexs[i+3]];
+          
+            //Check if tokens are in order vertically
+            if (secondToken.getYCoord() == firstToken.getYCoord() + 1 ){
+                sequentialOrder = true;
+                //alert("In First Check: " + sequentialOrder);
+            } else {
+                sequentialOrder = false;
+                //alert("In First Check: " + sequentialOrder);
+            }
+
+            if (thirdToken.getYCoord() == firstToken.getYCoord() + 2 ){
+                sequentialOrder = true;
+                //alert("In Second Check: " + sequentialOrder);
+            } else {
+                sequentialOrder = false;
+                //alert("In Second Check: " + sequentialOrder);
+            }
+
+            if (fourthToken.getYCoord() == firstToken.getYCoord() + 3 ){
+                sequentialOrder = true;
+                //alert("In Third Check: " + sequentialOrder);
+            } else {
+                sequentialOrder = false;
+                //alert("In Third Check: " + sequentialOrder);
+            }
+
+            if(sequentialOrder == true){
+                alert("The tokens are in order!!!");
+                let tokenID;
+                for (k = i; k < tokenIndexs.length; k++){
+                    if (player == "Player1"){
+                        tokenID = playerOneCoords[tokenIndexs[k]].getCoordinates();
+                    } else if (player == "Player2") {
+                        alert(playerTwoCoords[tokenIndexs[k]].getCoordinates());
+                        alert(tokenIndexs.length);
+                        tokenID = playerTwoCoords[tokenIndexs[k]].getCoordinates();
+                    }
+                    var elem = document.getElementById(tokenID); 
+                    elem.style.boxShadow = "0px 0px 30px 5px white";
+                } 
+                break; 
+            } 
+        }
+
+
     }
 
-
-
-
-    //Check if tokens are in order vertically
-    if (secondToken.getYCoord() != firstToken.getYCoord() + 1 ){
-        
-        sequentialOrder = false;
-    } 
-
-    if (thirdToken.getYCoord() != firstToken.getYCoord() + 2 ){
-        sequentialOrder = false;
-    } 
-
-    if (fourthToken.getYCoord() != firstToken.getYCoord() + 3 ){
-        sequentialOrder = false;
-    } 
+    // //Check if tokens are in order vertically
+    // if (secondToken.getYCoord() != firstToken.getYCoord() + 1 ){
     
-    if(sequentialOrder == true){
-        alert("The tokens are in order!!!");
-        let tokenID;
-        for (k = 0; k < tokenIndexs.length; k++){
-        if (player == "Player1"){
-            tokenID = playerOneCoords[tokenIndexs[k]].getCoordinates();
-        } else if (player == "Player2") {
-            tokenID = playerTwoCoords[tokenIndexs[k]].getCoordinates();
-        }
-        var elem = document.getElementById(tokenID); 
-        elem.style.boxShadow = "0px 0px 30px 5px white";
-        }  
-    } 
+    //     sequentialOrder = false;
+    // } 
+
+    // if (thirdToken.getYCoord() != firstToken.getYCoord() + 2 ){
+    //     sequentialOrder = false;
+    // } 
+
+    // if (fourthToken.getYCoord() != firstToken.getYCoord() + 3 ){
+    //     sequentialOrder = false;
+    // } 
+
+
+
+
+
+
+    
+    
+    // if(sequentialOrder == true){
+    //     alert("The tokens are in order!!!");
+    //     let tokenID;
+    //     for (k = 0; k < tokenIndexs.length; k++){
+    //     if (player == "Player1"){
+    //         tokenID = playerOneCoords[tokenIndexs[k]].getCoordinates();
+    //     } else if (player == "Player2") {
+    //         tokenID = playerTwoCoords[tokenIndexs[k]].getCoordinates();
+    //     }
+    //     var elem = document.getElementById(tokenID); 
+    //     elem.style.boxShadow = "0px 0px 30px 5px white";
+    //     }  
+    // } 
 }
+
+
+
 
