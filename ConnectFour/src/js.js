@@ -143,7 +143,6 @@ function checkWinner(){
             }
         }
         if (count >= 4){
-            //alert("Player 1 has 4 tokens in a column")
             checkIfVertical(tokenObjectPos, "Player1");
         }
         
@@ -159,7 +158,6 @@ function checkWinner(){
             }
         }
         if (count >= 4){
-            //alert("Player 2 has 4 tokens in a column")
             checkIfVertical(tokenObjectPos, "Player2");
         }  
     }  
@@ -172,17 +170,35 @@ function checkWinner(){
             if (playerOneCoords[j].y == i){
                 let currentIndex = playerOneCoords[j];
                 tokenObjectPos.push(currentIndex);
-                //alert(tokenObjectPos);
                 count++;
             }
         } 
     
         if (count >= 4) {
-             alert("Player 1 has 4 tokens in row: " + i);
              for (let n = 0; n < tokenObjectPos.length; n++){
                 console.log(tokenObjectPos[n].getCoordinates());
              }
              checkIfHorizontal(tokenObjectPos, "Player1");
+           
+        }
+    }
+
+    for (let i=1; i < 6; i++){
+        count = 0;
+        tokenObjectPos = [];
+        for (let j = 0; j < playerTwoCoords.length; j++){ 
+            if (playerTwoCoords[j].y == i){
+                let currentIndex = playerTwoCoords[j];
+                tokenObjectPos.push(currentIndex);
+                count++;
+            }
+        } 
+    
+        if (count >= 4) {
+             for (let n = 0; n < tokenObjectPos.length; n++){
+                console.log(tokenObjectPos[n].getCoordinates());
+             }
+             checkIfHorizontal(tokenObjectPos, "Player2");
            
         }
     }
@@ -293,7 +309,13 @@ function checkIfHorizontal(tokenIndexs, player) {
                 var elem = document.getElementById(tokenID); 
                 elem.style.boxShadow = "0px 0px 30px 5px white";
             }  
-            alert("Game is over")
+
+            if (player == "Player 1"){
+                alert("Game is over. Player 1 wins!");
+            } else {
+                alert("Game is over. Player 2 wins!");
+            }
+            
         }
     }
 }
