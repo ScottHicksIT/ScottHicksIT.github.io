@@ -12,15 +12,19 @@
   </head>
 
   <body>
-    <h3 style="text-align: center;color: grey;" id="playerTurn">Player One's Turn</h3>
-
-
-    <!-- <div class = "startMenu" id = "startMenu"> 
+    <h2 class = "playerTurn" id= "playerTurn">Player One's Turn</h2>
+    
+  
+    <div class = "startMenu" id = "startMenu"> 
       <h1>Connect 4</h1>
-      <button type = button onclick = "play()">Play</button>
-    </div> -->
+      <i>Developed By Scott Hicks</i>
+      <div class = "playButtonDiv">
+        <button class = "playButton" type = button onclick = "play()">Play</button>
+      </div>
+    </div>
 
     <div class ="board">
+      
         <div class="row">
             <span id="1,6" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
             <span id="2,6" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>

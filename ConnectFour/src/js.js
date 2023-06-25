@@ -74,7 +74,13 @@ class Position {
 }
 
 function play(){
-    
+    document.getElementById("startMenu").style.display = "none";
+    const tokenCollection = document.getElementsByClassName("token");
+    for (let i = 0; i < tokenCollection.length; i++ ){
+        //tokenCollection[i].style.backgroundColor = "black";
+        tokenCollection[i].style.display = "block";
+    }
+    document.getElementById("playerTurn").style.display = "block";
 }
 
 
