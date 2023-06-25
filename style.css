@@ -126,9 +126,30 @@ body {
   background-color: #D9D9D9;
   border-radius: 50%;
   display: inline-block;
-  animation: pulse 10s infinite;
-
+  /* animation: pulse 10s infinite; */
+  /* display:none; */
 }
+
+.startMenu {
+	
+	
+	background-color:rgba(20, 23, 245,1); /*blue*/
+	
+	z-index:4;
+	border-style:dashed;
+	border-color:white;
+	box-shadow: 0 12px 16px 0 rgba(255,255,255,0.24), 0 17px 50px 0 rgba(255,255,255,0.19);
+	font-family: 'Quicksand', sans-serif;
+	
+	position: fixed;
+	top: 50%;
+  left: 50%;
+	
+	margin-top: -200px;
+	margin-left: -100px; 
+}
+
+
 
 
 
