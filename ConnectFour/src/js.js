@@ -101,19 +101,6 @@ function getIndexNumberCoord(a) {
     }
 }
 
-//Create Board
-
-
-// b = new Board(6, 7);
-// let positions = new Array;
-// //Create Positions 
-// for (let i = 1; i <= b.getHeight(); i++) {
-//     for (let j = 1; j <= b.getWidth(); j++) {
-//         a = new Position(j, i);
-//         //alert(i + "," + j);
-//         positions.push(a);
-//     }
-// }
 b = new Board(6, 7);
 let positions = new Array;
 function createBoard(){
@@ -128,9 +115,6 @@ function createBoard(){
     }
 }
 createBoard();
-
-
-
 
 //This runs if a player selects a token. 
 function updateToken(clicked_id) {
@@ -453,8 +437,11 @@ function checkIfHorizontal(positionIDs, player, positionObjs) {
     let secondToken;
     let thirdToken;
     let fourthToken;
+    let currentPosIDs = new Array;
+
 
     for (let i = 0; i < positionObjs.length; i++) {
+
         //Order Tokens by X Value
         positionObjs.sort(function (a, b) { return a.x - b.x });
         firstToken = positionObjs[i];
@@ -469,13 +456,23 @@ function checkIfHorizontal(positionIDs, player, positionObjs) {
         selectedTokens.push(thirdToken)
         selectedTokens.push(fourthToken)
 
+        //Store current position IDs
+        currentPosIDs = [];
+        currentPosIDs.push(positionIDs[i]);
+        currentPosIDs.push(positionIDs[i+1]);
+        currentPosIDs.push(positionIDs[i+2]);
+        currentPosIDs.push(positionIDs[i+3]);
+        
+
         if (secondToken.getXCoord() == firstToken.getXCoord() + 1) {
             sequentialOrder = true;
+           
         } else {
             sequentialOrder = false;
         }
         if (thirdToken.getXCoord == firstToken.getXCoord + 2) {
             sequentialOrder = true;
+            
         } else {
             sequentialOrder = false;
         }
@@ -487,17 +484,20 @@ function checkIfHorizontal(positionIDs, player, positionObjs) {
         }
 
         if (sequentialOrder == true) {
-            gameOverPhase(player, positionIDs);
+            gameOverPhase(player, currentPosIDs);
         }
     }
 }
 
 function gameOverPhase(winner, selectedTokens) {
-    //alert(winner + " Wins!");
     gameOver = true;
     playerWinner
     document.getElementById("playerWinner").innerHTML = winner + " Wins!";
     document.getElementById("gameOverMessage").style.display = "block";
+    for (let i = 0; i < positions.length;i++){
+        let elem = document.getElementById(positions[i].getCoordinates());
+        elem.style.boxShadow = "none";
+    }
     for (k = 0; k <= 4; k++) {
         let tokenID = positions[selectedTokens[k]];
         tokenID = tokenID.getCoordinates();
@@ -509,7 +509,6 @@ function gameOverPhase(winner, selectedTokens) {
 function playAgain() {
     createBoard();
     for (let i = 0; i < positions.length;i++){
-        //alert(positions[i].getCoordinates());
         let elem = document.getElementById(positions[i].getCoordinates());
         elem.style.boxShadow = "none";
         elem.style.backgroundColor = "#D9D9D9";
