@@ -393,19 +393,20 @@ function checkIfVertical(positionIDs, player) {
     let secondToken;
     let thirdToken;
     let fourthToken;
+    let currentPosIDs = new Array;
 
     for (let i = 0; i < positionIDs.length; i++) {
-        if (player == "Player 1") {
-            firstToken = positions[positionIDs[i]];
-            secondToken = positions[positionIDs[i + 1]];
-            thirdToken = positions[positionIDs[i + 2]];
-            fourthToken = positions[positionIDs[i + 3]];
-        } else if (player == "Player 2") {
-            firstToken = positions[positionIDs[i]];
-            secondToken = positions[positionIDs[i + 1]];
-            thirdToken = positions[positionIDs[i + 2]];
-            fourthToken = positions[positionIDs[i + 3]];
-        }
+        firstToken = positions[positionIDs[i]];
+        secondToken = positions[positionIDs[i+1]];
+        thirdToken = positions[positionIDs[i+2]];
+        fourthToken = positions[positionIDs[i+3]];
+
+         //Store current position IDs
+         currentPosIDs = [];
+         currentPosIDs.push(positionIDs[i]);
+         currentPosIDs.push(positionIDs[i+1]);
+         currentPosIDs.push(positionIDs[i+2]);
+         currentPosIDs.push(positionIDs[i+3]);
 
         //Check if tokens are in order vertically
         if (secondToken.getYCoord() == firstToken.getYCoord() + 1) {
@@ -425,7 +426,7 @@ function checkIfVertical(positionIDs, player) {
         }
 
         if (sequentialOrder == true) {
-            gameOverPhase(player, positionIDs)
+            gameOverPhase(player, currentPosIDs)
             break;
         }
     }
