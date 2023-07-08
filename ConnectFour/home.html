@@ -10,83 +10,88 @@
     <script src="src\js.js"></script>
 
   </head>
-
-  <body>
-    <h2 class = "playerTurn" id= "playerTurn">Player One's Turn</h2>
-    
+  <body class="Site">
+    <header>
+     
+    </header>
+    <main class="Site-content">
+      
+      <h2 class = "playerTurn" id= "playerTurn">Player One's Turn</h2>
+      <div class = "startMenu" id = "startMenu"> 
+        <h1>Connect 4</h1>
+        <i>Developed By Scott Hicks</i>
+        <div class = "playButtonDiv">
+          <button class = "playButton" type = button onclick = "play()">Play</button>
+        </div>
+      </div>
+      <div class = "gameOverMessage" id = "gameOverMessage"> 
+        <h1>Game Over</h1>
+        <h2 class = "playerWinner" id = "playerWinner"></h2>
+        <div class = "playButtonDiv">
+          <button class = "playButton" type = button onclick = "playAgain()">Play Again</button>
+        </div>
+      </div>
   
-    <div class = "startMenu" id = "startMenu"> 
-      <h1>Connect 4</h1>
-      <i>Developed By Scott Hicks</i>
-      <div class = "playButtonDiv">
-        <button class = "playButton" type = button onclick = "play()">Play</button>
+      <div class ="board">
+          <div class="row">
+              <span id="1,6" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+              <span id="2,6" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+              <span id="3,6" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+              <span id="4,6" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+              <span id="5,6" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+              <span id="6,6" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+              <span id="7,6" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span> 
+          </div>
+          <div class="row">
+            <span id="1,5" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+            <span id="2,5" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+            <span id="3,5" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+            <span id="4,5" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+            <span id="5,5" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+            <span id="6,5" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+            <span id="7,5" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+          </div>
+          <div class="row">
+            <span id="1,4" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+            <span id="2,4" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+            <span id="3,4" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+            <span id="4,4" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+            <span id="5,4" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+            <span id="6,4" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+            <span id="7,4" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+          </div>
+          <div class="row">
+            <span id="1,3" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+            <span id="2,3" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+            <span id="3,3" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+            <span id="4,3" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+            <span id="5,3" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+            <span id="6,3" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+            <span id="7,3" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+          </div>
+          <div class="row">
+            <span id="1,2" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+            <span id="2,2" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+            <span id="3,2" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+            <span id="4,2" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+            <span id="5,2" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+            <span id="6,2" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+            <span id="7,2" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+          </div>
+          <div class="row">
+            <span id="1,1" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+            <span id="2,1" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+            <span id="3,1" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+            <span id="4,1" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+            <span id="5,1" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+            <span id="6,1" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+            <span id="7,1" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
+          </div>
       </div>
-    </div>
-    <div class = "gameOverMessage" id = "gameOverMessage"> 
-      <h1>Game Over</h1>
-      <h2 class = "playerWinner" id = "playerWinner"></h2>
-      <div class = "playButtonDiv">
-        <button class = "playButton" type = button onclick = "playAgain()">Play Again</button>
-      </div>
-    </div>
-
-    <div class ="board">
-      
-        <div class="row">
-            <span id="1,6" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-            <span id="2,6" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-            <span id="3,6" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-            <span id="4,6" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-            <span id="5,6" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-            <span id="6,6" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-            <span id="7,6" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span> 
-        </div>
-        <div class="row">
-          <span id="1,5" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-          <span id="2,5" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-          <span id="3,5" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-          <span id="4,5" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-          <span id="5,5" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-          <span id="6,5" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-          <span id="7,5" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-        </div>
-        <div class="row">
-          <span id="1,4" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-          <span id="2,4" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-          <span id="3,4" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-          <span id="4,4" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-          <span id="5,4" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-          <span id="6,4" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-          <span id="7,4" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-        </div>
-        <div class="row">
-          <span id="1,3" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-          <span id="2,3" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-          <span id="3,3" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-          <span id="4,3" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-          <span id="5,3" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-          <span id="6,3" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-          <span id="7,3" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-        </div>
-        <div class="row">
-          <span id="1,2" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-          <span id="2,2" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-          <span id="3,2" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-          <span id="4,2" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-          <span id="5,2" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-          <span id="6,2" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-          <span id="7,2" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-        </div>
-        <div class="row">
-          <span id="1,1" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-          <span id="2,1" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-          <span id="3,1" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-          <span id="4,1" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-          <span id="5,1" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-          <span id="6,1" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-          <span id="7,1" class="token" onmouseenter="checkToken(this.id)" onmouseleave="resetToken(this.id)" onClick="updateToken(this.id)"></span>
-        </div>
-      
-    </div>
+    </main>
   </body>
+
+  <footer class="footer">
+    <a class="btn btn-primary" href="../index.html" role="button">Home</a>
+  </footer>
 </html>

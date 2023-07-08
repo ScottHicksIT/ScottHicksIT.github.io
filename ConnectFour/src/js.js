@@ -103,7 +103,7 @@ function getIndexNumberCoord(a) {
 
 b = new Board(6, 7);
 let positions = new Array;
-function createBoard(){
+function createBoard() {
     positions = [];
     //Create Positions 
     for (let i = 1; i <= b.getHeight(); i++) {
@@ -118,46 +118,52 @@ createBoard();
 
 //This runs if a player selects a token. 
 function updateToken(clicked_id) {
-    //Recieves the text coordinate and creates it as array with two elements
-    let text = clicked_id;
-    let coordArrary = text.split(",")
-    let x = coordArrary[0]
-    let y = coordArrary[1]
 
-    if (checkIfPlayAbleToken(x, y) == true) {
-        if (playerOneTurn == true) {
-            document.getElementById(clicked_id).style.backgroundColor = "red";
-            document.getElementById("playerTurn").innerHTML = "Player Two's Turn";
+    if (gameOver == false) {
+        //Recieves the text coordinate and creates it as array with two elements
+        let text = clicked_id;
+        let coordArrary = text.split(",")
+        let x = coordArrary[0]
+        let y = coordArrary[1]
 
-            //Position Object
-            for (let i = 0; i < positions.length; i++) {
-                if (positions[i].getXCoord() == x && positions[i].getYCoord() == y) {
-                    positions[i].setPlayer("Player 1");
+        if (checkIfPlayAbleToken(x, y) == true) {
+            if (playerOneTurn == true) {
+                document.getElementById(clicked_id).style.backgroundColor = "red";
+                document.getElementById("playerTurn").innerHTML = "Player Two's Turn";
+
+                //Position Object
+                for (let i = 0; i < positions.length; i++) {
+                    if (positions[i].getXCoord() == x && positions[i].getYCoord() == y) {
+                        positions[i].setPlayer("Player 1");
+                    }
                 }
-            }
 
-            playerOneTurn = false;
-        } else {
-            document.getElementById(clicked_id).style.backgroundColor = "yellow";
-            document.getElementById("playerTurn").innerHTML = "Player One's Turn";
-            playerOneTurn = true;
+                playerOneTurn = false;
+            } else {
+                document.getElementById(clicked_id).style.backgroundColor = "yellow";
+                document.getElementById("playerTurn").innerHTML = "Player One's Turn";
+                playerOneTurn = true;
 
-            //Position Object
-            for (let i = 0; i < positions.length; i++) {
-                if (positions[i].getXCoord() == x && positions[i].getYCoord() == y) {
-                    positions[i].setPlayer("Player 2");
+                //Position Object
+                for (let i = 0; i < positions.length; i++) {
+                    if (positions[i].getXCoord() == x && positions[i].getYCoord() == y) {
+                        positions[i].setPlayer("Player 2");
+                    }
                 }
             }
         }
+        checkWinner(x, y);
     }
-    checkWinner(x, y);
+
+
 }
 
 //Once token has been selected, this checks if the token has already been played or if there is a token below the selected token. 
 function checkIfPlayAbleToken(x, y) {
+
+
     //Check if token has already been played
     let playable = true;
-
     if (positions[(getIndexNumber(x, y))].getPlayer() != null) {
         //alert("Position Invalid");
         playable = false;
@@ -187,38 +193,44 @@ function checkIfPlayAbleToken(x, y) {
 function checkToken(id) {
     //Check to see if the token is placed above another token
     //If token is placed on bottom row, it does not check.
-    let text = id;
-    let coordArrary = text.split(",")
-    let x = coordArrary[0]
-    let y = coordArrary[1]
-    tokenID = x + "," + y;
-    var elem = document.getElementById(tokenID);
+    if (gameOver == false) {
+        let text = id;
+        let coordArrary = text.split(",")
+        let x = coordArrary[0]
+        let y = coordArrary[1]
+        tokenID = x + "," + y;
+        var elem = document.getElementById(tokenID);
 
-    //Checks if a token is below
-    if (y != 1) {
-        let tokenBelow = false;
-        for (let i = 0; i < positions.length; i++) {
-            if ((x == positions[i].x && y - 1 == (positions[i].y) && positions[i].getPlayer() != null)) {
-                tokenBelow = true;
+        //Checks if a token is below
+        if (y != 1) {
+            let tokenBelow = false;
+            for (let i = 0; i < positions.length; i++) {
+                if ((x == positions[i].x && y - 1 == (positions[i].y) && positions[i].getPlayer() != null)) {
+                    tokenBelow = true;
+                }
             }
-        }
-        if (tokenBelow == false) {
-            playable = false;
-            elem.style.boxShadow = "0px 0px 30px 5px red";
-        }
+            if (tokenBelow == false) {
+                playable = false;
+                elem.style.boxShadow = "0px 0px 30px 5px red";
+            }
 
+        }
     }
+
 }
 
 //Resets the token's box shadow once the player moves away from the token they are mousing over. 
 function resetToken(id) {
-    let text = id;
-    let coordArrary = text.split(",")
-    let x = coordArrary[0]
-    let y = coordArrary[1]
-    tokenID = x + "," + y;
-    var elem = document.getElementById(tokenID);
-    elem.style.boxShadow = "0px 0px 0px 0px red";
+    if (gameOver == false) {
+        let text = id;
+        let coordArrary = text.split(",")
+        let x = coordArrary[0]
+        let y = coordArrary[1]
+        tokenID = x + "," + y;
+        var elem = document.getElementById(tokenID);
+        elem.style.boxShadow = "0px 0px 0px 0px red";
+    }
+
 }
 
 //Check who has won
@@ -397,16 +409,16 @@ function checkIfVertical(positionIDs, player) {
 
     for (let i = 0; i < positionIDs.length; i++) {
         firstToken = positions[positionIDs[i]];
-        secondToken = positions[positionIDs[i+1]];
-        thirdToken = positions[positionIDs[i+2]];
-        fourthToken = positions[positionIDs[i+3]];
+        secondToken = positions[positionIDs[i + 1]];
+        thirdToken = positions[positionIDs[i + 2]];
+        fourthToken = positions[positionIDs[i + 3]];
 
-         //Store current position IDs
-         currentPosIDs = [];
-         currentPosIDs.push(positionIDs[i]);
-         currentPosIDs.push(positionIDs[i+1]);
-         currentPosIDs.push(positionIDs[i+2]);
-         currentPosIDs.push(positionIDs[i+3]);
+        //Store current position IDs
+        currentPosIDs = [];
+        currentPosIDs.push(positionIDs[i]);
+        currentPosIDs.push(positionIDs[i + 1]);
+        currentPosIDs.push(positionIDs[i + 2]);
+        currentPosIDs.push(positionIDs[i + 3]);
 
         //Check if tokens are in order vertically
         if (secondToken.getYCoord() == firstToken.getYCoord() + 1) {
@@ -460,20 +472,20 @@ function checkIfHorizontal(positionIDs, player, positionObjs) {
         //Store current position IDs
         currentPosIDs = [];
         currentPosIDs.push(positionIDs[i]);
-        currentPosIDs.push(positionIDs[i+1]);
-        currentPosIDs.push(positionIDs[i+2]);
-        currentPosIDs.push(positionIDs[i+3]);
-        
+        currentPosIDs.push(positionIDs[i + 1]);
+        currentPosIDs.push(positionIDs[i + 2]);
+        currentPosIDs.push(positionIDs[i + 3]);
+
 
         if (secondToken.getXCoord() == firstToken.getXCoord() + 1) {
             sequentialOrder = true;
-           
+
         } else {
             sequentialOrder = false;
         }
         if (thirdToken.getXCoord == firstToken.getXCoord + 2) {
             sequentialOrder = true;
-            
+
         } else {
             sequentialOrder = false;
         }
@@ -495,7 +507,7 @@ function gameOverPhase(winner, selectedTokens) {
     playerWinner
     document.getElementById("playerWinner").innerHTML = winner + " Wins!";
     document.getElementById("gameOverMessage").style.display = "block";
-    for (let i = 0; i < positions.length;i++){
+    for (let i = 0; i < positions.length; i++) {
         let elem = document.getElementById(positions[i].getCoordinates());
         elem.style.boxShadow = "none";
     }
@@ -509,13 +521,14 @@ function gameOverPhase(winner, selectedTokens) {
 
 function playAgain() {
     createBoard();
-    for (let i = 0; i < positions.length;i++){
+    for (let i = 0; i < positions.length; i++) {
         let elem = document.getElementById(positions[i].getCoordinates());
         elem.style.boxShadow = "none";
         elem.style.backgroundColor = "#D9D9D9";
     }
     document.getElementById("gameOverMessage").style.display = "none";
     playerOneTurn = true;
+    gameOver = false;
     document.getElementById("playerTurn").innerHTML = "Player One's Turn";
 
 }

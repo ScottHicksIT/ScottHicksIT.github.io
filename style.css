@@ -1,7 +1,15 @@
 body {
   background-color: black;
   color: white;
+}
 
+.Site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+.Site-content {
+  flex: 1;
 }
 
 /* Intro Section */
@@ -101,6 +109,10 @@ body {
   background-color: #2a2828 !important;
 } 
  
+
+.footer {
+  background-color: white;
+}
   
 
 /* Connect Four */
@@ -178,7 +190,6 @@ body {
   padding: 10px;
   display: none;
 }
-
 
 /* Responsiveness */
 
