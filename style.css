@@ -111,7 +111,15 @@ body {
  
 
 .footer {
-  background-color: white;
+  background-color: #2A2828;
+  margin: 0px 30px 10px 30px;
+  padding: 10px;
+  
+}
+
+.link {
+  color: white;
+  text-decoration: none;
 }
   
 
